@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
 import { useState } from "react";
+import ToDo from "./views/ToDo";
 function App() {
   const [name, setName] = useState("Long");
   const [input, setInput] = useState("");
@@ -30,16 +31,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world! {name}</h1>
-        <div className="todos-container">
-          {todos.map((todo) => {
-            console.log(">>> check todo list:", todo);
-            return (
-              <li className="todos-child" key={todo.id}>
-                {todo.title}
-              </li>
-            );
-          })}
-        </div>
+        <ToDo data={todos} title={"all todos"} />
         <input
           type="text"
           value={input}
