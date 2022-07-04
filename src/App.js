@@ -7,9 +7,10 @@ function App() {
   const [name, setName] = useState("Long");
   const [input, setInput] = useState("");
   const [todos, setToDos] = useState([
-    { id: "todos1", title: "watching tv" },
-    { id: "todos2", title: "doing homework" },
-    { id: "todos3", title: "playing game" },
+    { id: "todos1", title: "watching tv", type: "Long" },
+    { id: "todos2", title: "doing homework", type: "Long" },
+    { id: "todos3", title: "playing game", type: "abc" },
+    { id: "todos4", title: "reading books", type: "abc" },
   ]);
   const handleEventOnClick = (event) => {
     if (!input) {
@@ -32,6 +33,10 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world! {name}</h1>
         <ToDo data={todos} title={"all todos"} />
+        <ToDo
+          data={todos.filter((item) => item.type === "Long")}
+          title={"Long's todos :"}
+        />
         <input
           type="text"
           value={input}
