@@ -18,7 +18,11 @@ function App() {
       return;
     }
     //hook doesn't merge state so we use spread syntax array
-    let newtodo = { id: "abc", title: input };
+    let newtodo = {
+      id: Math.floor(Math.random() * 10000 + 1),
+      title: input,
+      type: "Long",
+    };
     setToDos([...todos, newtodo]);
     setInput("");
   };
@@ -26,16 +30,22 @@ function App() {
     setInput(event.target.value);
     console.log(">>> input: ", event.target.value);
   };
+  const deleteTodo = (id) => {
+    let currentTodo = todos;
+    currentTodo = currentTodo.filter((item) => item.id !== id);
+    setToDos(currentTodo);
+  };
   return (
     <div className="App">
       <Nav />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world! {name}</h1>
-        <ToDo data={todos} title={"all todos"} />
+        <ToDo data={todos} title={"all todos"} deleteTodo={deleteTodo} />
         <ToDo
           data={todos.filter((item) => item.type === "Long")}
           title={"Long's todos :"}
+          deleteTodo={deleteTodo}
         />
         <input
           type="text"
