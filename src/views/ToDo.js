@@ -22,8 +22,6 @@ const ToDo = ({ data, title, deleteTodo }) => {
           </div>
         );
       })}
-      {/* aaaaaaaaaaaa */}
-      {/* mmmmmmmmm */}
       <hr />
     </div>
   );

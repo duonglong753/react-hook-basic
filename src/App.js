@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./views/Nav";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ToDo from "./views/ToDo";
 function App() {
   const [name, setName] = useState("Long");
@@ -12,6 +12,15 @@ function App() {
     { id: "todos3", title: "playing game", type: "abc" },
     { id: "todos4", title: "reading books", type: "abc" },
   ]);
+
+  useEffect(() => {
+    console.log("run useEffect");
+  }, [input]);
+
+  useEffect(() => {
+    console.log("run useEffect todos");
+  }, [todos]);
+
   const handleEventOnClick = (event) => {
     if (!input) {
       alert("empty input!");
