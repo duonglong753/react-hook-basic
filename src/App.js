@@ -3,6 +3,7 @@ import "./App.css";
 import Nav from "./views/Nav";
 import { useState, useEffect } from "react";
 import ToDo from "./views/ToDo";
+import Covid from "./views/Covid";
 function App() {
   const [name, setName] = useState("Long");
   const [input, setInput] = useState("");
@@ -50,12 +51,13 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world! {name}</h1>
-        <ToDo data={todos} title={"all todos"} deleteTodo={deleteTodo} />
+        <Covid />
+        {/* <ToDo data={todos} title={"all todos"} deleteTodo={deleteTodo} />
         <ToDo
           data={todos.filter((item) => item.type === "Long")}
           title={"Long's todos :"}
           deleteTodo={deleteTodo}
-        />
+        /> */}
         <input
           type="text"
           value={input}
