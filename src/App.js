@@ -51,13 +51,13 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world! {name}</h1>
-        <Covid />
-        {/* <ToDo data={todos} title={"all todos"} deleteTodo={deleteTodo} />
+        {/* <Covid /> */}
+        <ToDo data={todos} title={"all todos"} deleteTodo={deleteTodo} />
         <ToDo
           data={todos.filter((item) => item.type === "Long")}
           title={"Long's todos :"}
           deleteTodo={deleteTodo}
-        /> */}
+        />
         <input
           type="text"
           value={input}

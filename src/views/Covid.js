@@ -3,7 +3,8 @@ import axios from "axios";
 import moment from "moment";
 function Covid() {
   const [dataCovid, setDataCovid] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
     const getAPI = async () => {
       setTimeout(async () => {
@@ -18,11 +19,15 @@ function Covid() {
               item.Date = moment(item.Date).format("DD/MM/YYYY");
               return item;
             });
+            data = data.reverse();
           }
           setDataCovid(data);
-          setLoading(false);
+          setIsLoading(false);
+          setIsError(false);
         } catch (error) {
-          console.error(error);
+          setIsError(true);
+          setIsLoading(false);
+          alert(error.message);
         }
       }, 3000);
     };
@@ -43,7 +48,8 @@ function Covid() {
           </tr>
         </thead>
         <tbody>
-          {loading === false &&
+          {isError === false &&
+            isLoading === false &&
             dataCovid &&
             dataCovid.length > 0 &&
             dataCovid.map((item) => {
@@ -57,10 +63,17 @@ function Covid() {
                 </tr>
               );
             })}
-          {loading === true && (
+          {isLoading === true && (
             <tr>
               <td colSpan={5} style={{ textAlign: "center" }}>
                 Loading...
+              </td>
+            </tr>
+          )}
+          {isError === true && (
+            <tr>
+              <td colSpan={5} style={{ textAlign: "center" }}>
+                Something went wrong...
               </td>
             </tr>
           )}
